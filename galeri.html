@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galeri Kegiatan - Wing Pendidikan 500/Umum</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary: #002e5d;
+        --accent: #f1c40f;
+        --white: #ffffff;
+        --dark: #1a1a1a;
+        --gray: #f4f4f4;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background: var(--gray);
+        color: var(--dark);
+        line-height: 1.6;
+        padding-top: 80px; /* Memberi ruang karena navbar fixed */
+      }
+
+      /* --- NAVBAR (Konsisten dengan Index) --- */
+      nav {
+        background: var(--primary);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 8%;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+      }
+
+      .logo {
+        color: white;
+        font-family: "Montserrat";
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 10px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        padding: 8px 15px;
+        border-radius: 4px;
+        transition: var(--transition);
+        text-transform: uppercase;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        background: var(--accent);
+        color: var(--primary);
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        color: white;
+        font-size: 1.5rem;
+      }
+
+      /* --- HEADER HALAMAN --- */
+      .page-header {
+        background:
+          linear-gradient(rgba(0, 46, 93, 0.8), rgba(0, 46, 93, 0.8)),
+          url("galeri/foto.5.jpg");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+        margin-bottom: 40px;
+      }
+
+      .page-header h1 {
+        font-family: "Montserrat";
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+      }
+
+      /* --- GALERI GRID --- */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto 60px;
+        padding: 0 20px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .photo-card {
+        background: var(--white);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+        cursor: pointer;
+        position: relative;
+      }
+
+      .photo-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .photo-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .photo-card:hover img {
+        transform: scale(1.1);
+      }
+
+      .photo-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 46, 93, 0.9));
+        color: white;
+        padding: 20px;
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .photo-card:hover .photo-overlay {
+        opacity: 1;
+      }
+
+      /* --- FOOTER (Konsisten dengan Index) --- */
+      footer {
+        background: var(--primary);
+        color: var(--white);
+        padding: 60px 10% 20px;
+        margin-top: 40px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-about h3,
+      .footer-links h3,
+      .footer-contact h3 {
+        font-family: "Montserrat";
+        margin-bottom: 20px;
+        color: var(--accent);
+        font-size: 1.2rem;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+      .footer-links ul li {
+        margin-bottom: 10px;
+      }
+      .footer-links ul li a {
+        color: white;
+        text-decoration: none;
+        transition: var(--transition);
+        font-size: 0.9rem;
+      }
+      .footer-links ul li a:hover {
+        color: var(--accent);
+        padding-left: 5px;
+      }
+
+      .footer-contact p {
+        margin-bottom: 12px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .social-icons {
+        margin-top: 20px;
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-icons a {
+        color: var(--primary);
+        background: white;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.8rem;
+        opacity: 0.7;
+      }
+
+      /* --- RESPONSIVE --- */
+      @media (max-width: 768px) {
+        .hamburger {
+          display: block;
+        }
+        .nav-links {
+          position: fixed;
+          top: 60px;
+          right: -100%;
+          background: var(--primary);
+          width: 80%;
+          height: 100vh;
+          flex-direction: column;
+          padding: 50px 30px;
+          transition: 0.5s ease;
+        }
+        .nav-links.active {
+          right: 0;
+        }
+        .page-header h1 {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="logo">
+        <i class="fas fa-shield-halved"></i> WINGDIK 500/UMUM
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="visi_misi.html">Visi Misi</a></li>
+        <li><a href="berita.html">Berita</a></li>
+        <li><a href="galeri.html" class="active">Galeri</a></li>
+        <li><a href="organisasi.html">Organisasi</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <h1>DOKUMENTASI KEGIATAN</h1>
+      <p>Wing Pendidikan 500/Umum - TNI Angkatan Udara</p>
+    </header>
+
+    <main class="container">
+      <div class="gallery-grid">
+        <div class="photo-card">
+          <img src="galeri/foto.1.jpg" alt="Kegiatan 1" />
+          <div class="photo-overlay">Latihan Dasar</div>
+        </div>
+        <div class="photo-card">
+          <img src="galeri/foto.2.jpg" alt="Kegiatan 2" />
+          <div class="photo-overlay">Upacara Pembukaan</div>
+        </div>
+        <div class="photo-card">
+          <img src="galeri/foto.3.jpg" alt="Kegiatan 3" />
+          <div class="photo-overlay">Pendidikan Siber</div>
+        </div>
+        <div class="photo-card">
+          <img src="galeri/foto.4.jpg" alt="Kegiatan 4" />
+          <div class="photo-overlay">Kegiatan Olahraga</div>
+        </div>
+        <div class="photo-card">
+          <img src="galeri/foto.5.jpg" alt="Kegiatan 5" />
+          <div class="photo-overlay">Bakti Sosial</div>
+        </div>
+        <div class="photo-card">
+          <img src="galeri/foto.6.jpeg" alt="Kegiatan 6" />
+          <div class="photo-overlay">Pendidikan Kejuruan</div>
+        </div>
+        <div class="photo-card">
+          <img src="galeri/foto.7.jpeg" alt="Kegiatan 7" />
+          <div class="photo-overlay">Rapat Kerja</div>
+        </div>
+        <div class="photo-card">
+          <img src="galeri/foto.8.jpeg" alt="Kegiatan 8" />
+          <div class="photo-overlay">Kunjungan Kedinasan</div>
+        </div>
+        <div class="photo-card">
+          <img src="galeri/foto.9.jpeg" alt="Kegiatan 9" />
+          <div class="photo-overlay">Pelatihan IT</div>
+        </div>
+        <div class="photo-card">
+          <img src="galeri/foto.10.jpeg" alt="Kegiatan 10" />
+          <div class="photo-overlay">Penutupan Pendidikan</div>
+        </div>
+        <div class="photo-card">
+          <img src="galeri/foto.11.jpeg" alt="Kegiatan 11" />
+          <div class="photo-overlay">Apel Pagi</div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-about">
+          <h3>WINGDIK 500/UMUM</h3>
+          <p>
+            Satuan pendidikan unggulan TNI Angkatan Udara yang berdedikasi
+            menciptakan prajurit berkarakter tinggi.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h3>Navigasi Cepat</h3>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="visi_misi.html">Visi & Misi</a></li>
+            <li><a href="galeri.html">Galeri</a></li>
+            <li><a href="kontak.html">Hubungi Kami</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h3>Kontak Kami</h3>
+          <p><i class="fas fa-location-dot"></i> Jakarta, Indonesia</p>
+          <p><i class="fas fa-phone"></i> (021) 1234-5678</p>
+          <p><i class="fas fa-envelope"></i> info@wingdik500.mil.id</p>
+        </div>
+      </div>
+
+      <div class="copyright">
+        &copy; 2026 Wing Pendidikan 500/Umum - TNI Angkatan Udara.
+      </div>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

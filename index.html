@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wing Pendidikan 500/Umum - TNI AU</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary: #002e5d; /* Biru Navy TNI AU */
+        --accent: #f1c40f; /* Gold */
+        --white: #ffffff;
+        --dark: #1a1a1a;
+        --gray: #f4f4f4;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        overflow-x: hidden;
+        background: var(--white);
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      /* --- NAVBAR --- */
+      nav {
+        background: var(--primary);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 8%;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+      }
+
+      .logo {
+        color: white;
+        font-family: "Montserrat";
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 10px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        padding: 8px 15px;
+        border-radius: 4px;
+        transition: var(--transition);
+        text-transform: uppercase;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        background: var(--accent);
+        color: var(--primary);
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        color: white;
+        font-size: 1.5rem;
+      }
+
+      /* --- HERO SLIDER --- */
+      .slider {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1.2s ease-in-out;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
+
+      .slide::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 46, 93, 0.7));
+      }
+
+      .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        text-align: center;
+        color: white;
+        width: 90%;
+      }
+
+      .hero-content h1 {
+        font-family: "Montserrat";
+        font-size: 3.5rem;
+        text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.6);
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+      }
+
+      .hero-content p {
+        font-size: 1.4rem;
+        opacity: 0.9;
+        font-weight: 300;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* --- WELCOME SECTION --- */
+      .welcome-section {
+        padding: 80px 10%;
+        text-align: center;
+        background: var(--white);
+      }
+
+      .welcome-section h2 {
+        font-family: "Montserrat";
+        color: var(--primary);
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+      }
+
+      .welcome-section p {
+        max-width: 900px;
+        margin: 0 auto;
+        color: #555;
+        font-size: 1.1rem;
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        background: var(--primary);
+        color: var(--white);
+        padding: 60px 10% 20px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-about h3,
+      .footer-links h3,
+      .footer-contact h3 {
+        font-family: "Montserrat";
+        margin-bottom: 20px;
+        color: var(--accent);
+        font-size: 1.2rem;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links ul li a {
+        color: white;
+        text-decoration: none;
+        transition: var(--transition);
+        font-size: 0.9rem;
+      }
+
+      .footer-links ul li a:hover {
+        color: var(--accent);
+        padding-left: 5px;
+      }
+
+      .footer-contact p {
+        margin-bottom: 12px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .social-icons {
+        margin-top: 20px;
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-icons a {
+        color: var(--primary);
+        background: white;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .social-icons a:hover {
+        background: var(--accent);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.8rem;
+        opacity: 0.7;
+      }
+
+      /* --- RESPONSIVE --- */
+      @media (max-width: 768px) {
+        nav {
+          padding: 1rem 5%;
+        }
+        .hamburger {
+          display: block;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 60px;
+          right: -100%;
+          background: var(--primary);
+          width: 80%;
+          height: 100vh;
+          flex-direction: column;
+          padding: 50px 30px;
+          transition: 0.5s ease;
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links.active {
+          right: 0;
+        }
+        .hero-content h1 {
+          font-size: 2.2rem;
+        }
+        .hero-content p {
+          font-size: 1rem;
+        }
+        .welcome-section {
+          padding: 50px 5%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="logo">
+        <i class="fas fa-shield-halved"></i> WINGDIK 500/UMUM
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Beranda</a></li>
+        <li><a href="visi_misi.html">Visi Misi</a></li>
+        <li><a href="berita.html">Berita</a></li>
+        <li><a href="galeri.html">Galeri</a></li>
+        <li><a href="organisasi.html">Organisasi</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+
+    <main>
+      <section class="slider">
+        <div
+          class="slide active"
+          style="background-image: url(&quot;galeri/foto.1.jpg&quot;)"
+        ></div>
+        <div
+          class="slide"
+          style="background-image: url(&quot;galeri/foto.2.jpg&quot;)"
+        ></div>
+        <div
+          class="slide"
+          style="background-image: url(&quot;galeri/foto.3.jpg&quot;)"
+        ></div>
+
+        <div class="hero-content">
+          <h1>SWA BHUWANA PAKSA</h1>
+          <p>
+            Wing Pendidikan 500/Umum siap mencetak prajurit yang Adaptif,
+            Modern, Profesional, dan Unggul guna mendukung kejayaan TNI Angkatan
+            Udara.
+          </p>
+        </div>
+      </section>
+
+      <section class="welcome-section">
+        <h2>Selamat Datang</h2>
+        <p>
+          Wing Pendidikan 500/Umum (Wingdik 500/Umum) merupakan satuan pelaksana
+          pendidikan di bawah kendali Kodiklatau. Kami berfokus pada
+          penyelenggaraan pendidikan non-teknik bagi personel militer dan PNS
+          TNI AU untuk mewujudkan sumber daya manusia yang berkualitas tinggi di
+          bidang administrasi, siber, kesehatan, hingga intelijen.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-about">
+          <h3>WINGDIK 500/UMUM</h3>
+          <p>
+            Satuan pendidikan unggulan TNI Angkatan Udara yang berdedikasi
+            menciptakan prajurit berkarakter dan berintegritas tinggi dalam
+            menghadapi tantangan global.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h3>Navigasi Cepat</h3>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="visi_misi.html">Visi & Misi</a></li>
+            <li><a href="berita.html">Berita Terkini</a></li>
+            <li><a href="galeri.html">Galeri Kegiatan</a></li>
+            <li><a href="kontak.html">Hubungi Kami</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h3>Kontak Kami</h3>
+          <p>
+            <i class="fas fa-location-dot"></i> Markas Wingdik 500/Umum,
+            Jakarta, Indonesia
+          </p>
+          <p><i class="fas fa-phone"></i> (021) 1234-5678</p>
+          <p><i class="fas fa-envelope"></i> info@wingdik500.mil.id</p>
+          <p><i class="fas fa-clock"></i> Senin - Jumat: 07:00 - 15:30 WIB</p>
+        </div>
+      </div>
+
+      <div class="copyright">
+        &copy; 2026 Wing Pendidikan 500/Umum - TNI Angkatan Udara. All Rights
+        Reserved.
+      </div>
+    </footer>
+
+    <script>
+      // Hamburger Menu Toggle
+      function toggleMenu() {
+        const navLinks = document.getElementById("navLinks");
+        navLinks.classList.toggle("active");
+      }
+
+      // Hero Slider Logic
+      const slides = document.querySelectorAll(".slide");
+      let currentSlide = 0;
+
+      function nextSlide() {
+        slides[currentSlide].classList.remove("active");
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add("active");
+      }
+
+      // Jalankan slider otomatis setiap 5 detik
+      setInterval(nextSlide, 5000);
+
+      // Menutup menu saat link diklik (untuk mobile)
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          document.getElementById("navLinks").classList.remove("active");
+        });
+      });
+    </script>
+  </body>
+</html>
