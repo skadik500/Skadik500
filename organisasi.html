@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Struktur Organisasi - Wing Pendidikan 500/Umum</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary: #002e5d;
+        --accent: #f1c40f;
+        --white: #ffffff;
+        --dark: #1a1a1a;
+        --gray-bg: #f4f7fa;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background: var(--gray-bg);
+        color: var(--dark);
+        line-height: 1.6;
+        padding-top: 80px;
+      }
+
+      /* --- NAVBAR --- */
+      nav {
+        background: var(--primary);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 8%;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .logo {
+        color: white;
+        font-family: "Montserrat";
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 5px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.85rem;
+        padding: 8px 15px;
+        border-radius: 4px;
+        transition: var(--transition);
+        text-transform: uppercase;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        background: var(--accent);
+        color: var(--primary);
+      }
+
+      /* --- HEADER --- */
+      .page-header {
+        background:
+          linear-gradient(rgba(0, 46, 93, 0.9), rgba(0, 46, 93, 0.9)),
+          url("galeri/foto.1.jpg");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 80px 20px;
+      }
+
+      .page-header h1 {
+        font-family: "Montserrat";
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+      }
+
+      /* --- CONTENT --- */
+      .container {
+        max-width: 1100px;
+        margin: -40px auto 80px;
+        padding: 0 20px;
+      }
+
+      .info-card {
+        background: var(--white);
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .section-title {
+        font-family: "Montserrat";
+        color: var(--primary);
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--accent);
+      }
+
+      /* --- COMMANDER SECTION --- */
+      .commander-box {
+        background: var(--primary);
+        color: white;
+        padding: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .commander-icon {
+        font-size: 4rem;
+        color: var(--accent);
+      }
+
+      .commander-info h2 {
+        font-family: "Montserrat";
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+      }
+
+      .commander-info p {
+        opacity: 0.9;
+        font-weight: 300;
+      }
+
+      /* --- SKADIK GRID --- */
+      .skadik-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 25px;
+      }
+
+      .skadik-card {
+        background: var(--white);
+        padding: 30px;
+        border-radius: 12px;
+        border-top: 5px solid var(--primary);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+      }
+
+      .skadik-card:hover {
+        transform: translateY(-10px);
+        border-top-color: var(--accent);
+      }
+
+      .skadik-card h3 {
+        font-family: "Montserrat";
+        color: var(--primary);
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .skadik-card .leader {
+        font-weight: 700;
+        color: #333;
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .skadik-card .role {
+        font-size: 0.85rem;
+        color: #666;
+      }
+
+      /* --- SUPPORT SECTION --- */
+      .support-box {
+        background: #eef2f7;
+        padding: 30px;
+        border-radius: 12px;
+        margin-top: 50px;
+        text-align: center;
+        border-left: 5px solid var(--accent);
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        background: var(--primary);
+        color: white;
+        padding: 40px 8% 20px;
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .commander-box {
+          flex-direction: column;
+          text-align: center;
+        }
+        .nav-links {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="logo">
+        <i class="fas fa-shield-halved"></i> WINGDIK 500/UMUM
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="visi_misi.html">Visi Misi</a></li>
+        <li><a href="berita.html">Berita</a></li>
+        <li><a href="galeri.html">Galeri</a></li>
+        <li><a href="organisasi.html" class="active">Organisasi</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+
+    <header class="page-header">
+      <h1>STRUKTUR ORGANISASI</h1>
+      <p>Wing Pendidikan 500/Umum - Kodiklatau</p>
+    </header>
+
+    <main class="container">
+      <section class="info-card">
+        <p>
+          <strong>Wing Pendidikan 500/Umum (Wingdik 500/Umum)</strong> adalah
+          satuan pelaksana di bawah <strong>Kodiklatau</strong> yang bermarkas
+          di Bogor. Berperan strategis mendidik personel TNI AU (militer & PNS)
+          dalam bidang non-teknis seperti administrasi, kesehatan, dan kejuruan
+          umum lainnya.
+        </p>
+      </section>
+
+      <h2 class="section-title">PIMPINAN</h2>
+      <section class="commander-box">
+        <div class="commander-icon"><i class="fas fa-user-tie"></i></div>
+        <div class="commander-info">
+          <p>Danwingdik 500/Umum</p>
+          <h2>Kolonel Pnb Didik Setiya Nugroho, S.E., M.Han.</h2>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> Markas Komando (Mako): Jl.
+            Raya Semplak, Kabupaten Bogor
+          </p>
+        </div>
+      </section>
+
+      <h2 class="section-title">JAJARAN SKADIK</h2>
+      <div class="skadik-grid">
+        <div class="skadik-card">
+          <h3>Skadik 501</h3>
+          <span class="leader"
+            >Mayor Inf I Gusti Bagus Prayuda, S.E., M.M.</span
+          >
+          <p class="role">
+            Pendidikan kejuruan administrasi umum. Berlokasi di Bogor.
+          </p>
+        </div>
+
+        <div class="skadik-card">
+          <h3>Skadik 503</h3>
+          <span class="leader"
+            >Letkol Adm Muhammad Risman Aris, S.A.P., M. Han.</span
+          >
+          <p class="role">
+            Pendidikan kejuruan administrasi personel dan keuangan. Berlokasi di
+            Bogor.
+          </p>
+        </div>
+
+        <div class="skadik-card">
+          <h3>Skadik 504</h3>
+          <span class="leader">Letkol Kes dr. Klara Sinabutar, Sp.KP</span>
+          <p class="role">
+            Pendidikan kejuruan kesehatan. Berlokasi di Jakarta.
+          </p>
+        </div>
+
+        <div class="skadik-card">
+          <h3>Skadik 506</h3>
+          <span class="leader">I Nyoman G.A.A.S., S.Kom</span>
+          <p class="role">
+            Pendidikan kejuruan siber dan kejuruan umum lainnya. Berlokasi di
+            Bogor.
+          </p>
+        </div>
+      </div>
+
+      <section class="support-box">
+        <h3 style="color: var(--primary); margin-bottom: 10px">
+          Organisasi Pendukung
+        </h3>
+        <p>
+          <strong
+            >Primkopau (Primer Koperasi Angkatan Udara) Elang Perkasa</strong
+          >
+        </p>
+        <p style="font-size: 0.9rem; color: #555">
+          Mendukung kesejahteraan personel di lingkungan Wingdik 500/Umum.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2026 Wing Pendidikan 500/Umum - TNI Angkatan Udara. Swa Bhuwana
+        Paksa.
+      </p>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

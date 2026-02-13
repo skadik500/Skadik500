@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Berita - Wing Pendidikan 500/Umum</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary: #002e5d;
+        --accent: #f1c40f;
+        --white: #ffffff;
+        --dark: #1a1a1a;
+        --gray-bg: #f0f2f5;
+        --text-main: #2c3e50;
+        --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background: var(--gray-bg);
+        color: var(--text-main);
+        line-height: 1.8;
+        padding-top: 80px;
+      }
+
+      /* --- NAVBAR --- */
+      nav {
+        background: var(--primary);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 8%;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .logo {
+        color: white;
+        font-family: "Montserrat";
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 5px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.85rem;
+        padding: 8px 16px;
+        border-radius: 4px;
+        transition: var(--transition);
+        text-transform: uppercase;
+      }
+
+      .nav-links a:hover {
+        background: var(--accent);
+        color: var(--primary);
+      }
+
+      /* --- ARTICLE CONTAINER --- */
+      .main-wrapper {
+        max-width: 1000px;
+        margin: 40px auto 80px;
+        padding: 0 20px;
+      }
+
+      .breadcrumb {
+        margin-bottom: 25px;
+        font-size: 0.9rem;
+      }
+
+      .breadcrumb a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .breadcrumb a:hover {
+        color: var(--accent);
+      }
+
+      .article-card {
+        background: var(--white);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.05);
+      }
+
+      .article-header {
+        padding: 50px 50px 30px;
+        background: var(--white);
+        text-align: center;
+      }
+
+      .category-tag {
+        background: var(--accent);
+        color: var(--primary);
+        padding: 5px 20px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-bottom: 20px;
+      }
+
+      .article-header h1 {
+        font-family: "Montserrat";
+        font-size: 2.5rem;
+        color: var(--primary);
+        line-height: 1.2;
+        margin-bottom: 25px;
+        font-weight: 800;
+      }
+
+      .meta-info {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        color: #7f8c8d;
+        font-size: 0.9rem;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .meta-info span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* --- FEATURED IMAGE --- */
+      .image-container {
+        padding: 0 50px;
+        margin-bottom: 40px;
+      }
+
+      .main-image {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* --- CONTENT TEXT --- */
+      .content-body {
+        padding: 0 80px 60px;
+        font-size: 1.15rem;
+        color: #34495e;
+        text-align: justify;
+      }
+
+      .content-body p {
+        margin-bottom: 25px;
+      }
+
+      .content-body strong {
+        color: var(--primary);
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        background: var(--primary);
+        color: var(--white);
+        padding: 60px 8% 30px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 40px;
+      }
+
+      .footer-brand h3 {
+        color: var(--accent);
+        font-family: "Montserrat";
+        margin-bottom: 20px;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        font-size: 0.85rem;
+        opacity: 0.8;
+      }
+
+      /* --- RESPONSIVE --- */
+      @media (max-width: 768px) {
+        .article-header {
+          padding: 30px 20px;
+        }
+        .article-header h1 {
+          font-size: 1.8rem;
+        }
+        .image-container {
+          padding: 0 20px;
+        }
+        .main-image {
+          height: 300px;
+        }
+        .content-body {
+          padding: 0 25px 40px;
+          font-size: 1.05rem;
+        }
+        .meta-info {
+          flex-direction: column;
+          gap: 10px;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="logo">
+        <i class="fas fa-shield-halved"></i> WINGDIK 500/UMUM
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="visi_misi.html">Visi Misi</a></li>
+        <li><a href="berita.html">Berita</a></li>
+        <li><a href="galeri.html">Galeri</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-wrapper">
+      <div class="breadcrumb">
+        <a href="index.html">Beranda</a> / <a href="berita.html">Berita</a> /
+        <span id="bread-title">Detail</span>
+      </div>
+
+      <article class="article-card">
+        <div class="article-header">
+          <span class="category-tag">Informasi Satuan</span>
+          <h1 id="title">Memuat Berita...</h1>
+          <div class="meta-info">
+            <span
+              ><i class="far fa-calendar-alt"></i>
+              <span id="date">-</span></span
+            >
+            <span><i class="far fa-user"></i> Pen: Wingdik 500/Umum</span>
+            <span><i class="far fa-eye"></i> 1,240 Dilihat</span>
+          </div>
+        </div>
+
+        <div class="image-container">
+          <img id="image" src="" alt="News Image" class="main-image" />
+        </div>
+
+        <div id="full-content" class="content-body"></div>
+      </article>
+    </main>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>WINGDIK 500/UMUM</h3>
+          <p>
+            Profesional, Modern, dan Humanis. Mencetak SDM TNI AU yang unggul di
+            era siber dan teknologi informasi.
+          </p>
+        </div>
+        <div>
+          <h4 style="color: var(--accent); margin-bottom: 20px">
+            Link Terkait
+          </h4>
+          <ul style="list-style: none">
+            <li>
+              <a
+                href="#"
+                style="color: white; text-decoration: none; font-size: 0.9rem"
+                >TNI Angkatan Udara</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                style="color: white; text-decoration: none; font-size: 0.9rem"
+                >Kodiklatau</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p class="copyright">
+        &copy; 2026 Wing Pendidikan 500/Umum. Swa Bhuwana Paksa.
+      </p>
+    </footer>
+
+    <script>
+      // Data Berita (Simulasi Database)
+      const newsData = {
+        1: {
+          title: "Pembukaan Susbamenjur & Susjurlata Skadik 506",
+          date: "Jumat, 6 Februari 2026",
+          image: "galeri/foto.3.jpg",
+          content: `
+                    <p><strong>Bogor</strong> - Pembukaan Orientasi Siswa Susbamenjur dan Susjurlata sebagai tahapan awal pembinaan prajurit siswa sebelum memasuki proses pendidikan resmi. Kegiatan ini bertujuan menyiapkan SDM TNI AU yang disiplin dan berkarakter.</p>
+                    <p>Komandan Wingdik 500/Umum menekankan agar orientasi dimanfaatkan sebagai sarana penanaman disiplin dan pemahaman aturan. Seluruh rangkaian kegiatan dilaksanakan secara terukur dan humanis sesuai ketentuan yang berlaku.</p>`,
+        },
+        2: {
+          title: "Penutupan Pendidikan Sesarcabjur Siber A-2",
+          date: "Senin, 9 Februari 2026",
+          image: "galeri/foto.1.jpg",
+          content: `
+                    <p>Wing Pendidikan 500/Umum resmi menutup Pendidikan Sesarcabjur Siber Angkatan Ke-2. Upacara penutupan ditandai dengan penanggalan tanda siswa dan penyerahan ijazah secara simbolis di GSG Bambang Soegeng.</p>
+                    <p>Pendidikan ini krusial dalam mencetak personel yang adaptif menghadapi tantangan siber nasional guna mendukung kedaulatan digital wilayah udara Indonesia.</p>`,
+        },
+        3: {
+          title: "Bimtek Administrasi Pendidikan di Skadik 501",
+          date: "Selasa, 10 Februari 2026",
+          image: "galeri/foto.5.jpg",
+          content: `
+                    <p>Mayor Adm Dely mendampingi Paban IV/Mindik Ditdik Kodiklatau dalam kegiatan Bimbingan Teknis penyusunan administrasi pendidikan yang berlangsung di Aula Skadik 501.</p>
+                    <p>Melalui Bimtek ini, diharapkan seluruh satuan pendidikan di jajaran Wingdik semakin selaras dalam menerapkan standar administrasi terbaru TNI AU.</p>`,
+        },
+      };
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const newsId = urlParams.get("id");
+
+      if (newsId && newsData[newsId]) {
+        const data = newsData[newsId];
+        document.getElementById("title").innerText = data.title;
+        document.getElementById("bread-title").innerText = data.title;
+        document.getElementById("date").innerText = data.date;
+        document.getElementById("image").src = data.image;
+        document.getElementById("full-content").innerHTML = data.content;
+        document.title = data.title + " - Wingdik 500/Umum";
+      } else {
+        document.getElementById("title").innerText = "Berita Tidak Ditemukan";
+        document.getElementById("full-content").innerHTML =
+          "<p>Maaf, berita yang Anda cari tidak tersedia.</p>";
+      }
+    </script>
+  </body>
+</html>
